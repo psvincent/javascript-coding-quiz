@@ -1,0 +1,78 @@
+* {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+/* The header is the part that says view high scores and time. */
+header {
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+}
+
+header a {
+    color: blueviolet;
+}
+.container {
+    margin: auto;
+    width: 50%;
+    border: none;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+/* This h1 is the part that says coding quiz challenge */
+.big-text {
+    padding: 6% 0 0 0;
+    font-size: 44px;
+    font-weight: 2500;
+    display: flex;
+    justify-content: center;
+}
+/* This p is the text between the coding quiz challenge and the start quiz button */
+#quiz-start p {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    padding: 1% 28% 1% 28%;
+    text-align: center;
+}
+/* This is the start button for the quiz */
+.start-button {
+    display: flex;
+    justify-content: center;
+}
+/* This is the general button style throughout the quiz. */
+button {
+    height: 60px;
+    width: 175px;
+    border-radius: 10px;
+    border: none;
+    background-color: purple;
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+}
+
+button:hover {
+    background-color: magenta;
+}
+
+.btn {
+    height: 60px;
+    width: 300px;
+    display: flex;
+    justify-content: left;
+    font-size: 24px;
+}
+
+.answers {
+    display: grid;
+    padding: 2px;
+}
+
+.hidden {
+    display: none;
+}
+
+

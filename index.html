@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./assets/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Coding Assessment</title>
+</head>
+
+<body>
+    <header>
+        <!--View high scores button in the top left-->
+        <a onclick="viewHighScores()" id="highscores"><h3>View high scores</h3></a>
+        <!--Timer in the top right-->
+        <h3>Time: <span id="count">75</span></h3>
+    </header>
+    <main class="container">
+        <!--This is the screen you see before starting the quiz-->
+        <section id="quiz-start">
+            <h1 class="big-text">Coding Quiz Challenge</h1>
+            <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            <div class="start-button">
+            <button id="start-quiz">Start Quiz</button>
+            </div>
+        </section>
+        <!--This is the section with all the quiz questions and all the possible answers-->
+        <section id="quiz" class="hidden">
+        <div id="question" class="big-text"></div>
+        <div id="answer-buttons" class="answers">
+        <button id="one" class="btn">1.</button>
+        <br>
+        <button id="two" class="btn">2.</button>
+        <br>
+        <button id="three" class="btn">3.</button>
+        <br>
+        <button id="four" class="btn">4.</button>
+        </div>
+        <h4 id="correct-incorrect"></h4>
+    </div>
+        </section>
+        <section id="enter-score" class="hidden">
+            <h1>All done!</h1>
+            <h3 id="final-score"></h3>
+            <form id="entry-form">
+                <label for="initials">Enter Initials</label>
+                <input type="text" name="initials" id="initials" placeHolder="">
+            </form>
+            <div id="submit-button">
+                <button>Sumbit</button>
+            </div>
+        </section>
+        <section id="logged-scores" class="hidden">
+            <table>
+                <thead>
+                    <tr>
+                        <th id="player-name">Player: </th>
+                        <th id="final-score">Score: </th>
+                    </tr>
+                </thead>
+            </table>
+            <button id="Go back">Go back</button>
+            <button id="clear-scores">Clear high scores</button>
+        </section>
+
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="assets/script.js"></script>
+</body>
+</html>
