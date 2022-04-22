@@ -1,5 +1,6 @@
 // Getting all the initial HTML IDs to JavaScript
 var quiz = document.getElementById("quiz");
+var enterScore = document.getElementById("enter-score");
 var startScreen = document.getElementById("quiz-start");
 var highScores = document.getElementById("highscores");
 var timer = document.getElementById("count");
@@ -13,6 +14,8 @@ var optionFour = document.getElementById("four");
 var correctIncorrect = document.getElementById("correct-incorrect");
 var finalScore = document.getElementById("final-score");
 var scores = [];
+var index = 0;
+var timeLeft = 75;
 var localStorageScores = JSON.parse(localStorage.getItem("userData"));
 // Getting all the questions and putting them into an array.
 const questionOne = "Commonly used data types DO NOT include:";
@@ -72,26 +75,72 @@ const correctAnswers = [questionOneCorrectAnswer, questionTwoCorrectAnswer, ques
 
 // The listener for the start button to be clicked.
 startButton.addEventListener("click", quizStart);
-// The start button for the quizzes 
+
+// The start button for the quizzes that removes the welcome screen and starts with the actual quiz.
 function quizStart() {
     startScreen.classList.add("hidden");
     quiz.classList.remove("hidden");
     time();
 }
 
-function showQuestion() {
-    titleitem.innerHTML = question.title;
-    question.answers.forEach(element => {
-        
-    })
-}
+// Puts the actual questions and answers into the quiz.
+startButton.addEventListener("click", showQuestion);
 
+function showQuestion() {
+   if (index === quizQuestions.length - 0) {
+    setTimeout(function () {quiz.classList.add("hidden");
+    enterScore.classList.remove("hidden");
+}, 500);
+    setTimeout(function () {clearInterval(timeInterval)}, 500);
+   } else {
+       questionText.textContent = quizQuestions[index];
+       optionOne.textContent = quizAnswers[index].answerOne;
+       optionTwo.textContent = quizAnswers[index].answerTwo;
+       optionThree.textContent = quizAnswers[index].answerThree;
+       optionFour.textContent = quizAnswers[index].answerFour;
+   }
+};
+
+
+// Controls the timer of the quiz.
 function time() {
-    var timeInterval = setInterval(function() {
-        timer.innerText = count;
-        count--;
+    var timeInterval = setInterval(function () {
+        timeLeft --;
+        timer.textContent = "Time: " + timeLeft + " Seconds";
+        if (timeLeft <= 0) {
+            clearInterval(timeInterval);
+            quiz.classList.add("hidden");
+            enterScore.classList.remove("hidden");
+            timer.classList.add("hidden");
+        }
     }, 1000);
 }
 
+// Determines if the answer is correct or not on click.
+quiz.addEventListener("click", ifCorrect)
+
+
+// Function That determines if the answer the user selected is correct or not.
+function ifCorrect(event) {
+    if(event.target.matches(".btn")) {
+        let userAnswer = event.target.textContent;
+        correctIncorrect.textContent = " ";
+        // Says that if the answer is correct then display correct.
+        if(userAnswer === correctAnswers[index]) {
+            correctIncorrect.textContent = "Correct!"
+                correctIncorrect.classList.remove("hidden")
+        } else {
+            // Says that if the answer is incorrect then display incorrect and take 10 seconds off of the timer.
+            correctIncorrect.textContent = "Incorrect"
+                correctIncorrect.classList.remove("hidden")
+            timeLeft -= 10;
+        }
+       
+        index++;
+        
+    }
+    showQuestion();
+    return timeLeft;
+}
 
         
