@@ -13,6 +13,9 @@ var optionThree = document.getElementById("three");
 var optionFour = document.getElementById("four");
 var correctIncorrect = document.getElementById("correct-incorrect");
 var finalScore = document.getElementById("final-score");
+var submitButton = document.getElementById("submit-button");
+var viewScores = document.getElementById("logged-scores")
+var viewHighScoresButton = document.getElementById("view-highscores-button");
 var scores = [];
 var index = 0;
 var timeLeft = 75;
@@ -72,6 +75,8 @@ const questionFiveCorrectAnswer = questionFiveAnswers.answerFour;
 
 const correctAnswers = [questionOneCorrectAnswer, questionTwoCorrectAnswer, questionThreeCorrectAnswer, questionFourCorrectAnswer, questionFiveCorrectAnswer];
 
+
+viewScores.classList.add("hidden");
 
 // The listener for the start button to be clicked.
 startButton.addEventListener("click", quizStart);
@@ -141,6 +146,49 @@ function ifCorrect(event) {
     }
     showQuestion();
     return timeLeft;
+}
+
+submitButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    addInitials();
+    viewScores.classList.remove("hidden");
+    enterScore.classList.add("hidden");
+    timer.classList.add("hidden");
+})
+
+
+
+function addInitials() {
+    let initials = document.querySelector("#initials").value;
+    if (initials === "") {
+        initials = "AAA";
+    } else {
+        localStorage.setItem(initials, timeLeft);
+        document.querySelector(".user-scores").textContent = " ";
+        finalScore.textContent = initials + ": " + timeLeft;
+        document.querySelector(".user-scores").appendChild(finalScore);
+    }
+}
+
+document.querySelector("#go-back").addEventListener("click", function() {
+    index = 0;
+    timeLeft = 75;
+    viewScores.classList.add("hidden");
+    enterScore.classList.add("hidden");
+    timer.classList.remove("hidden");
+    quiz.classList.add("hidden");
+    startScreen.classList.remove("hidden");
+})
+
+viewHighScoresButton.addEventListener("click", viewHighScores);
+
+function viewHighScores() {
+    viewScores.classList.remove("hidden");
+    enterScore.classList.add("hidden");
+    timer.classList.add("hidden");
+    quiz.classList.add("hidden");
+    startScreen.classList.add("hidden");
+    finalScore.textContent = localStorageScores;
 }
 
         

@@ -13,7 +13,9 @@
 <body>
     <header>
         <!--View high scores button in the top left-->
-        <a onclick="viewHighScores()" id="highscores"><h3>View high scores</h3></a>
+        <div id="highscores view-highscores-button">
+        <button>View High Scores</button>
+        </div>
         <!--Timer in the top right-->
         <h3><span id="count">Time: 75 seconds</span></h3>
     </header>
@@ -52,16 +54,16 @@
                 <button>Sumbit</button>
             </div>
         </section>
-        <section id="logged-scores" class="hidden">
+        <section class="user-scores" id="logged-scores" class="hidden">
             <table>
                 <thead>
                     <tr>
-                        <th id="player-name">Player: </th>
-                        <th id="final-score">Score: </th>
+                        <!-- <th id="player-name">Player: </th> -->
+                        <th id="final-score"></th>
                     </tr>
                 </thead>
             </table>
-            <button id="Go back">Go back</button>
+            <button id="go-back">Go back</button>
             <button id="clear-scores">Clear high scores</button>
         </section>
 
