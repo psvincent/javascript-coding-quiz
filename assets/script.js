@@ -183,12 +183,10 @@ document.querySelector("#go-back").addEventListener("click", function() {
 viewHighScoresButton.addEventListener("click", viewHighScores);
 
 function viewHighScores() {
-    viewScores.classList.remove("hidden");
-    enterScore.classList.add("hidden");
-    timer.classList.add("hidden");
-    quiz.classList.add("hidden");
-    startScreen.classList.add("hidden");
-    finalScore.textContent = localStorageScores;
+   clearInterval(timeInterval);
+   quiz.classList.add("hidden");
+   enterScore.classList.add("hidden");
+   startScreen.classList.add("hidden");
 }
 
         
